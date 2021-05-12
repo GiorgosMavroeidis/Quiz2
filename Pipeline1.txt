@@ -1,0 +1,30 @@
+pipeline{
+    agent any
+    stages{
+        stage("Clone repository") {
+            steps{
+                url:"https://github.com/oefremidis/Quiz2_MathApp" 
+            }
+        }
+        stage("Package with Maven"){
+            steps {
+                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+            }
+        }
+        stage("Run the code"){
+            steps{
+                sh 'mvn --version'
+            }
+            post{
+                success{
+                    echo "Successful project build and run."
+                }
+                failure{
+                    echo "‘Project failure"
+                }
+                
+            }
+        }
+            
+    }
+}
