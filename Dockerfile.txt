@@ -1,0 +1,5 @@
+#Get latest httpd image
+FROM httpd
+
+#copy index.html
+COPY https://github.com/GiorgosMavroeidis/Quiz2/Index.html /usr/local/apache2/htdocs/
